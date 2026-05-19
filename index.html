@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Papo de Alcance | Especialista em Google Ads e Sites Rápido</title>
+<title>Papo de Alcance | Especialista em Google Meu Negócio e Sites</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
   
   :root {
-    --bg-color: #000000;
-    --surface: #0a0a0a;
-    --primary: #00C896; 
-    --accent: #39FF14;
-    --text-main: #FFFFFF;
-    --text-muted: #888888;
-    --border: #1a1a1a;
+    --google-blue: #4285F4;
+    --google-red: #EA4335;
+    --google-yellow: #FBBC05;
+    --google-green: #34A853;
+    
+    --bg-color: #FFFFFF;
+    --surface: #F8F9FA;
+    --text-main: #202124;
+    --text-muted: #5F6368;
+    --border: #DADCE0;
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
@@ -25,117 +28,125 @@
     overflow-x: hidden; 
   }
   
-  /* Cursor Personalizado */
+  /* Cursor Personalizado no estilo Google Blue */
   .custom-cursor {
     position: fixed; 
     top: 0; left: 0; 
     width: 20px; height: 20px;
-    background-color: rgba(0, 200, 150, 0.3); 
+    background-color: rgba(66, 133, 244, 0.2); 
     border-radius: 50%;
     pointer-events: none; 
     z-index: 9999;
     transform: translate(-50%, -50%); 
     transition: transform 0.15s ease-out, background-color 0.2s;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--google-blue);
   }
   .custom-cursor.hover { 
-    transform: translate(-50%, -50%) scale(2); 
-    background-color: var(--accent); 
-    border-color: var(--accent);
-    mix-blend-mode: difference;
+    transform: translate(-50%, -50%) scale(1.8); 
+    background-color: rgba(52, 168, 83, 0.2); 
+    border-color: var(--google-green);
   }
 
   /* Estrutura Layout */
   header { 
-    padding: 30px 5vw; 
+    padding: 20px 5vw; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     border-bottom: 1px solid var(--border);
-    background: rgba(0,0,0,0.8);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 100;
   }
   
-  .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
-  .logo span { color: var(--accent); }
+  .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; color: #4285F4; }
+  .logo span.red { color: var(--google-red); }
+  .logo span.yellow { color: var(--google-yellow); }
+  .logo span.green { color: var(--google-green); }
   
   .hero { 
-    min-height: 85vh; 
+    min-height: 80vh; 
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
     align-items: flex-start; 
     padding: 20px 5vw; 
-    background: radial-gradient(circle at 10% 50%, rgba(0, 200, 150, 0.05), transparent 50%);
+    background: linear-gradient(135deg, rgba(66,133,244,0.03) 0%, rgba(255,255,255,1) 100%);
   }
   
-  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.5rem; letter-spacing: -1.5px; line-height: 1.1; max-width: 800px;}
-  h1 span { color: var(--primary); }
+  h1 { font-size: clamp(2.3rem, 5.5vw, 4rem); margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.15; max-width: 900px; font-weight: 700; }
+  h1 span.blue { color: var(--google-blue); }
+  h1 span.green { color: var(--google-green); }
   
   .btn { 
-    background: transparent; 
-    color: var(--accent); 
-    padding: 16px 36px; 
-    border-radius: 4px; 
+    background: var(--google-blue); 
+    color: white; 
+    padding: 14px 32px; 
+    border-radius: 24px; 
     text-decoration: none; 
     font-weight: 500; 
-    border: 1px solid var(--accent);
-    transition: all 0.3s; 
+    transition: all 0.2s; 
     display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
   }
   .btn:hover { 
-    background: var(--accent); 
-    color: #000;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+    background: #1a73e8;
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    transform: translateY(-1px);
   }
   
   .section { 
-    padding: 100px 5vw; 
+    padding: 80px 5vw; 
     max-width: 1400px; 
     margin: 0 auto; 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-    gap: 30px; 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 32px; 
   }
   
   .card { 
-    background: var(--surface); 
+    background: var(--bg-color); 
     padding: 40px; 
-    border-radius: 8px; 
+    border-radius: 16px; 
     border: 1px solid var(--border); 
-    transition: transform 0.3s, border-color 0.3s; 
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
   }
   .card:hover { 
-    transform: translateY(-5px); 
-    border-color: var(--primary);
+    transform: translateY(-4px); 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-color: var(--google-blue);
   }
-  .card h3 { margin-bottom: 1rem; font-size: 1.5rem; color: var(--text-main); }
+  
+  /* Detalhes de cores nas bordas superiores dos cards para dar identidade */
+  .card.gbp { border-top: 4px solid var(--google-blue); }
+  .card.sites { border-top: 4px solid var(--google-green); }
+  
+  .card h3 { margin-bottom: 1.2rem; font-size: 1.4rem; font-weight: 700; }
 
   .contact-bar {
-    padding: 60px 5vw;
+    padding: 80px 5vw;
     text-align: center;
     border-top: 1px solid var(--border);
+    background: var(--surface);
   }
   .contact-link {
-    color: var(--text-main);
+    color: var(--google-blue);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0 15px;
-    transition: color 0.3s;
+    font-weight: 500;
+    transition: text-decoration 0.2s;
   }
-  .contact-link:hover { color: var(--accent); }
+  .contact-link:hover { text-decoration: underline; }
 
   /* Classes de Animação */
   .hidden { 
     opacity: 0; 
     transform: translateY(30px); 
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+    transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1); 
   }
   .show { opacity: 1; transform: translateY(0); }
 </style>
@@ -144,42 +155,35 @@
   <div class="custom-cursor" id="cursor"></div>
 
   <header class="hidden">
-    <div class="logo">Papo de <span>Alcance</span></div>
-    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target" style="padding: 10px 24px; font-size: 0.8rem;">Falar no WhatsApp</a>
+    <div class="logo">Papo de <span class="red">A</span><span class="yellow">l</span><span class="blue">c</span><span class="green">a</span><span class="red">n</span><span class="green">c</span>e</div>
+    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target" style="padding: 10px 20px; font-size: 0.85rem; border-radius: 18px;">Falar com Especialista</a>
   </header>
 
   <section class="hero hidden">
-    <h1>Máximo ROI. <br><span>Zero gargalos técnicos.</span></h1>
-    <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; font-size: 1.2rem; line-height: 1.6;">
-      Há 5 anos estruturando inteligência de tráfego no Google Ads e desenvolvendo sites de altíssima performance para conversão. 
-      Estratégia sólida para empresas que precisam de resultados metrificáveis.
+    <h1>Apareça no topo do <span class="blue">Google</span> com um posicionamento local impecável e <span class="green">sites ultrarrápidos</span>.</h1>
+    <p style="color: var(--text-muted); max-width: 680px; margin-bottom: 2.5rem; font-size: 1.15rem; line-height: 1.6;">
+      Domine a busca local na sua região e pare de perder clientes para a concorrência. Estruturação profissional de fichas e desenvolvimento sob medida focado em conversão direta.
     </p>
-    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target">Iniciar Projeto</a>
+    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target">Analisar Minha Empresa</a>
   </section>
 
   <section class="section">
-    <div class="card hidden hover-target">
-      <h3>Tráfego Pago (Google Ads)</h3>
-      <p style="color: var(--text-muted); line-height: 1.6;">
-        Gestão avançada de campanhas na rede de pesquisa. Estruturação de palavras-chave focadas no fundo do funil para capturar clientes no momento exato da intenção de compra.
+    <div class="card gbp hidden hover-target">
+      <h3>Perfil da Empresa no Google (GBP)</h3>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
+        Otimização técnica completa da sua ficha para posicionamento máximo no Google Maps e na rede de pesquisa. Configuração estratégica de categorias, palavras-chave de intenção local e gestão de relevância para atrair chamadas e rotas diariamente.
       </p>
     </div>
-    <div class="card hidden hover-target">
-      <h3>Sites de Alta Performance</h3>
-      <p style="color: var(--text-muted); line-height: 1.6;">
-        Desenvolvimento direto no código para carregamento instantâneo. Sem plugins lentos ou templates pesados. Otimização técnica pura para garantir nota 100 no PageSpeed do Google.
-      </p>
-    </div>
-    <div class="card hidden hover-target">
-      <h3>Estratégia de Conversão</h3>
-      <p style="color: var(--text-muted); line-height: 1.6;">
-        União entre a captação precisa do anúncio e a arquitetura persuasiva do site. Análise biomecânica do comportamento do usuário para eliminar atritos e maximizar contatos.
+    <div class="card sites hidden hover-target">
+      <h3>Desenvolvimento de Sites Rápidos</h3>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
+        Páginas criadas diretamente em código puro para carregamento instantâneo. Sem excesso de scripts, sem vulnerabilidades e totalmente otimizadas para os critérios do Core Web Vitals do Google, transformando cliques orgânicos em contatos reais.
       </p>
     </div>
   </section>
 
   <footer class="contact-bar hidden">
-    <p style="color: var(--text-muted); margin-bottom: 20px;">Curitiba, PR • Atendimento Nacional</p>
+    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">Papo de Alcance • Curitiba, PR</p>
     <div>
       <a href="mailto:papodealcance@gmail.com" class="contact-link hover-target">papodealcance@gmail.com</a>
       <span style="color: var(--border);">|</span>
@@ -203,7 +207,7 @@
       target.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) { entry.target.classList.add('show'); }
