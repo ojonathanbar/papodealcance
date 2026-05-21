@@ -3,218 +3,623 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Papo de Alcance | Especialista em Google Meu Negócio e Sites</title>
+<title>Papo de Alcance — Google Meu Negócio · Curitiba</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-  
-  :root {
-    --google-blue: #4285F4;
-    --google-red: #EA4335;
-    --google-yellow: #FBBC05;
-    --google-green: #34A853;
-    
-    --bg-color: #FFFFFF;
-    --surface: #F8F9FA;
-    --text-main: #202124;
-    --text-muted: #5F6368;
-    --border: #DADCE0;
-  }
-  
-  * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-  body { 
-    font-family: 'Inter', sans-serif; 
-    background-color: var(--bg-color); 
-    color: var(--text-main); 
-    overflow-x: hidden; 
-  }
-  
-  /* Cursor Personalizado no estilo Google Blue */
-  .custom-cursor {
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 20px; height: 20px;
-    background-color: rgba(66, 133, 244, 0.2); 
-    border-radius: 50%;
-    pointer-events: none; 
-    z-index: 9999;
-    transform: translate(-50%, -50%); 
-    transition: transform 0.15s ease-out, background-color 0.2s;
-    border: 1px solid var(--google-blue);
-  }
-  .custom-cursor.hover { 
-    transform: translate(-50%, -50%) scale(1.8); 
-    background-color: rgba(52, 168, 83, 0.2); 
-    border-color: var(--google-green);
-  }
-
-  /* Estrutura Layout */
-  header { 
-    padding: 20px 5vw; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; color: #4285F4; }
-  .logo span.red { color: var(--google-red); }
-  .logo span.yellow { color: var(--google-yellow); }
-  .logo span.green { color: var(--google-green); }
-  
-  .hero { 
-    min-height: 80vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: flex-start; 
-    padding: 20px 5vw; 
-    background: linear-gradient(135deg, rgba(66,133,244,0.03) 0%, rgba(255,255,255,1) 100%);
-  }
-  
-  h1 { font-size: clamp(2.3rem, 5.5vw, 4rem); margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.15; max-width: 900px; font-weight: 700; }
-  h1 span.blue { color: var(--google-blue); }
-  h1 span.green { color: var(--google-green); }
-  
-  .btn { 
-    background: var(--google-blue); 
-    color: white; 
-    padding: 14px 32px; 
-    border-radius: 24px; 
-    text-decoration: none; 
-    font-weight: 500; 
-    transition: all 0.2s; 
-    display: inline-block;
-    font-size: 0.95rem;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-  }
-  .btn:hover { 
-    background: #1a73e8;
-    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
-    transform: translateY(-1px);
-  }
-  
-  .section { 
-    padding: 80px 5vw; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-    gap: 32px; 
-  }
-  
-  .card { 
-    background: var(--bg-color); 
-    padding: 40px; 
-    border-radius: 16px; 
-    border: 1px solid var(--border); 
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
-  }
-  .card:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border-color: var(--google-blue);
-  }
-  
-  /* Detalhes de cores nas bordas superiores dos cards para dar identidade */
-  .card.gbp { border-top: 4px solid var(--google-blue); }
-  .card.sites { border-top: 4px solid var(--google-green); }
-  
-  .card h3 { margin-bottom: 1.2rem; font-size: 1.4rem; font-weight: 700; }
-
-  .contact-bar {
-    padding: 80px 5vw;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .contact-link {
-    color: var(--google-blue);
-    text-decoration: none;
-    font-size: 1.1rem;
-    margin: 0 15px;
-    font-weight: 500;
-    transition: text-decoration 0.2s;
-  }
-  .contact-link:hover { text-decoration: underline; }
-
-  /* Classes de Animação */
-  .hidden { 
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1); 
-  }
-  .show { opacity: 1; transform: translateY(0); }
+/* ─── RESET ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;overflow-x:hidden;cursor:none}
+ 
+/* ─── CUSTOM CURSOR ─────────────────────── */
+#cur-dot{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--blue);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,background .2s}
+#cur-ring{position:fixed;top:0;left:0;width:44px;height:44px;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);border:2px solid transparent;background:conic-gradient(from 0deg,#4285F4 0% 25%,#EA4335 25% 50%,#FBBC04 50% 75%,#34A853 75% 100%) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;transition:width .2s,height .2s,opacity .2s}
+body.cursor-hover #cur-dot{transform:translate(-50%,-50%) scale(0);background:var(--blue)}
+body.cursor-hover #cur-ring{width:60px;height:60px}
+@media(hover:none){#cur-dot,#cur-ring{display:none}body{cursor:auto}}
+ 
+/* ─── VARS ─────────────────────────────── */
+:root{
+  --blue:#4285F4;--green:#34A853;--red:#EA4335;--yellow:#FBBC04;
+  --dark:#0A0A0A;--dark2:#141414;--dark3:#1E1E1E;
+  --white:#FFFFFF;--off:#F7F8FA;--border:#E8EAED;
+  --text:#202124;--muted:#5F6368;--light:#9AA0A6;
+}
+ 
+/* ─── FLOATING WA ───────────────────────── */
+.wa{position:fixed;bottom:28px;right:28px;z-index:500;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,.45);transition:transform .2s}
+.wa:hover{transform:scale(1.12)}
+ 
+/* ─── NAV ───────────────────────────────── */
+nav{position:fixed;inset:0 0 auto;z-index:400;height:68px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
+nav.solid{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border)}
+.nav-logo{font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.3px;transition:color .4s}
+nav.solid .nav-logo{color:var(--dark)}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+nav.solid .nav-link{color:var(--muted)}
+.nav-link:hover{color:#fff}
+nav.solid .nav-link:hover{color:var(--blue)}
+.nav-btn{padding:10px 24px;border-radius:100px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;background:#fff;color:var(--dark);transition:all .2s}
+nav.solid .nav-btn{background:var(--blue);color:#fff}
+.nav-btn:hover{opacity:.88;transform:translateY(-1px)}
+@media(max-width:580px){.nav-link{display:none}}
+ 
+/* ─── HERO ──────────────────────────────── */
+.hero{min-height:100vh;background:var(--dark);position:relative;overflow:hidden;display:flex;align-items:center;padding:100px 40px 80px}
+ 
+/* dot grid */
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+ 
+/* google glows */
+.glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);opacity:.18}
+.glow-b{width:600px;height:600px;background:var(--blue);top:-150px;right:-100px}
+.glow-g{width:400px;height:400px;background:var(--green);bottom:-100px;left:-80px}
+.glow-r{width:300px;height:300px;background:var(--red);top:40%;right:30%}
+ 
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:2;width:100%}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr}}
+ 
+/* hero text */
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;margin-bottom:24px}
+.g4{display:flex;gap:4px}
+.g4 span{width:8px;height:8px;border-radius:50%}
+.badge-txt{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(42px,5.5vw,72px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;color:#fff;margin-bottom:20px}
+.h1-blue{color:var(--blue)}
+.h1-green{color:var(--green)}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;max-width:460px;margin-bottom:36px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-main{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:100px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .2s;border:none}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#2d6ed4;transform:translateY(-2px);box-shadow:0 10px 32px rgba(66,133,244,.4)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.hero-stats{display:flex;gap:36px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+.hst{display:flex;flex-direction:column;gap:4px}
+.hst-n{font-family:'Outfit',sans-serif;font-size:30px;font-weight:800;color:#fff}
+.hst-l{font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.04em}
+ 
+/* hero image placeholder */
+.hero-img-wrap{position:relative}
+.img-placeholder{border-radius:20px;overflow:hidden;position:relative;aspect-ratio:4/3}
+.img-ph{width:100%;height:100%;background:linear-gradient(135deg,rgba(66,133,244,.15),rgba(52,168,83,.1));border:1.5px dashed rgba(255,255,255,.15);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px}
+.img-ph-icon{font-size:40px;opacity:.4}
+.img-ph-label{font-size:12px;color:rgba(255,255,255,.35);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.img-ph-hint{font-size:11px;color:rgba(255,255,255,.2)}
+ 
+/* hero floating card */
+.hero-card{position:absolute;bottom:-20px;left:-20px;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:10px}
+.hc-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.hc-text{font-size:13px;font-weight:500;color:#fff}
+ 
+/* ─── TICKER ────────────────────────────── */
+.ticker{height:48px;background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);overflow:hidden;display:flex;align-items:center}
+.tk-track{display:flex;gap:0;animation:ticker 22s linear infinite;white-space:nowrap}
+.tk-item{height:48px;padding:0 28px;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);border-right:1px solid rgba(255,255,255,.05)}
+.tk-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+ 
+/* ─── SECTION BASE ──────────────────────── */
+section{padding:96px 40px}
+.container{max-width:1080px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.eye-line{width:28px;height:2px;border-radius:1px}
+h2{font-family:'Outfit',sans-serif;font-size:clamp(32px,4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;color:var(--dark);margin-bottom:16px}
+h2 em{font-style:normal}
+.lead{font-size:17px;font-weight:300;color:var(--muted);line-height:1.75;max-width:500px}
+ 
+/* ─── PAIN ──────────────────────────────── */
+.pain{background:var(--off)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:56px}
+.pain-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.pain-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.09)}
+.pain-card:hover::before{transform:scaleX(1)}
+.pc1::before{background:var(--red)}
+.pc2::before{background:var(--yellow)}
+.pc3::before{background:var(--blue)}
+.pain-icon{font-size:36px;margin-bottom:20px;display:block}
+.pain-title{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px}
+.pain-text{font-size:14px;color:var(--muted);line-height:1.8}
+ 
+/* ─── STATS DARK ────────────────────────── */
+.stats-dark{background:var(--dark);padding:80px 40px}
+.stats-dark h2{color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden;margin-top:56px;border:1px solid rgba(255,255,255,.06)}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.sbox{padding:40px 28px;background:var(--dark2);transition:background .25s}
+.sbox:hover{background:var(--dark3)}
+.sbox-num{font-family:'Outfit',sans-serif;font-size:52px;font-weight:900;line-height:1;margin-bottom:8px}
+.sbox-label{font-size:13px;color:rgba(255,255,255,.4);line-height:1.5}
+ 
+/* ─── ABOUT ─────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+.about-img-box{position:relative}
+.about-ph{border-radius:24px;aspect-ratio:3/4;background:linear-gradient(135deg,#f0f4ff,#e8f5e9);border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:28px}
+.about-ph-icon{font-size:48px;opacity:.35}
+.about-ph-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.about-ph-hint{font-size:11px;color:var(--light)}
+.about-chip{position:absolute;bottom:-16px;right:-16px;background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--dark)}
+.ac-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.atag{padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid var(--border);color:var(--muted)}
+.atag-b{border-color:rgba(66,133,244,.3);color:var(--blue);background:rgba(66,133,244,.05)}
+.atag-g{border-color:rgba(52,168,83,.3);color:var(--green);background:rgba(52,168,83,.05)}
+.atag-r{border-color:rgba(234,67,53,.3);color:var(--red);background:rgba(234,67,53,.05)}
+.atag-y{border-color:rgba(251,188,4,.3);color:#B8860B;background:rgba(251,188,4,.05)}
+ 
+/* ─── HOW ───────────────────────────────── */
+.how{background:var(--off)}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+@media(max-width:760px){.how-steps{grid-template-columns:1fr}}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:20px;transition:transform .3s,box-shadow .3s}
+.how-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.step-top{display:flex;align-items:flex-start;justify-content:space-between}
+.step-num{font-family:'Outfit',sans-serif;font-size:60px;font-weight:900;line-height:1;letter-spacing:-2px}
+.step-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.hw1 .step-num{color:var(--blue)}.hw1 .step-icon{background:#F0F4FF}
+.hw2 .step-num{color:var(--green)}.hw2 .step-icon{background:#F0FDF4}
+.hw3 .step-num{color:var(--red)}.hw3 .step-icon{background:#FFF0F0}
+.step-title{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px}
+.step-text{font-size:14px;color:var(--muted);line-height:1.8;flex:1}
+ 
+/* ─── PLANS ─────────────────────────────── */
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:56px}
+.plan{border-radius:24px;padding:36px;position:relative;transition:transform .3s,box-shadow .3s}
+.plan:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.1)}
+.plan-light{background:var(--off);border:1.5px solid var(--border)}
+.plan-dark{background:var(--dark);color:#fff}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 18px;border-radius:100px;white-space:nowrap}
+.plan-name{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.plan-light .plan-name{color:var(--muted)}
+.plan-dark .plan-name{color:rgba(255,255,255,.45)}
+.plan-price{font-family:'Outfit',sans-serif;font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.plan-light .plan-price{color:var(--dark)}
+.plan-dark .plan-price{color:#fff}
+.plan-period{font-size:13px;margin-bottom:28px}
+.plan-light .plan-period{color:var(--light)}
+.plan-dark .plan-period{color:rgba(255,255,255,.35)}
+.plan-sep{height:1px;margin:24px 0}
+.plan-light .plan-sep{background:var(--border)}
+.plan-dark .plan-sep{background:rgba(255,255,255,.08)}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.plan-list li{font-size:14px;display:flex;align-items:flex-start;gap:10px}
+.plan-light .plan-list li{color:var(--muted)}
+.plan-dark .plan-list li{color:rgba(255,255,255,.6)}
+.plan-list li::before{content:'✓';width:18px;height:18px;border-radius:50%;background:var(--green);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.plan-cta{display:block;text-align:center;padding:14px;border-radius:100px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .2s}
+.cta-dark{background:var(--dark);color:#fff}
+.cta-dark:hover{background:#333}
+.cta-blue{background:var(--blue);color:#fff}
+.cta-blue:hover{background:#2d6ed4;transform:translateY(-1px)}
+.cta-out{border:1.5px solid rgba(255,255,255,.2);color:#fff}
+.cta-out:hover{border-color:rgba(255,255,255,.5)}
+ 
+/* ─── FAQ ───────────────────────────────── */
+.faq{background:var(--off)}
+.faq-body{max-width:740px;margin:56px auto 0}
+.fq{border-bottom:1px solid var(--border)}
+.fq-btn{width:100%;text-align:left;background:transparent;border:none;padding:22px 0;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;color:var(--dark);cursor:none;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.fq-ico{width:30px;height:30px;border-radius:50%;background:#fff;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--blue);flex-shrink:0;transition:all .25s}
+.fq.open .fq-ico{background:var(--blue);color:#fff;transform:rotate(45deg)}
+.fq-ans{display:none;padding:0 0 22px;font-size:14px;font-weight:300;color:var(--muted);line-height:1.85}
+.fq.open .fq-ans{display:block}
+ 
+/* ─── CTA FINAL ─────────────────────────── */
+.cta-fin{background:var(--dark);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-fin::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:28px 28px}
+.cta-fin h2{color:#fff;position:relative;z-index:1}
+.cta-fin p{color:rgba(255,255,255,.45);font-size:17px;font-weight:300;margin:14px 0 40px;position:relative;z-index:1}
+.btn-white{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--dark);padding:18px 44px;border-radius:100px;font-size:16px;font-weight:700;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .25s;position:relative;z-index:1}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,255,255,.15)}
+.cta-note{font-size:13px;color:rgba(255,255,255,.22);margin-top:18px;position:relative;z-index:1}
+ 
+/* ─── FOOTER ────────────────────────────── */
+footer{background:#070707;padding:36px 40px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.foot-logo{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:rgba(255,255,255,.5)}
+.foot-g4{display:flex;gap:7px}
+footer p{font-size:12px;color:rgba(255,255,255,.18);text-align:center}
+ 
+/* ─── ANIMATIONS ────────────────────────── */
+ 
+/* hero load-in */
+.hl{opacity:0;transform:translateY(28px);animation:fadeUp .8s ease forwards}
+.hl.d1{animation-delay:.1s}
+.hl.d2{animation-delay:.22s}
+.hl.d3{animation-delay:.34s}
+.hl.d4{animation-delay:.46s}
+.hl.d5{animation-delay:.58s}
+.hl-img{opacity:0;transform:translateX(32px);animation:fadeLeft .9s ease .5s forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{to{opacity:1;transform:translateX(0)}}
+ 
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv-l{transform:translateX(-36px)}
+.rv-l.in{transform:translateX(0)}
+.rv-r{transform:translateX(36px)}
+.rv-r.in{transform:translateX(0)}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+ 
+/* parallax hero bg */
+.hero-pattern-layer{position:absolute;inset:-20%;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px;will-change:transform}
+ 
+@media(max-width:600px){
+  section{padding:64px 20px}
+  .hero{padding:90px 20px 64px}
+  nav{padding:0 20px}
+  .hero-stats{gap:20px;flex-wrap:wrap}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .hero-card{display:none}
+}
 </style>
 </head>
 <body>
-  <div class="custom-cursor" id="cursor"></div>
-
-  <header class="hidden">
-    <div class="logo">Papo de <span class="red">A</span><span class="yellow">l</span><span class="blue">c</span><span class="green">a</span><span class="red">n</span><span class="green">c</span>e</div>
-    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target" style="padding: 10px 20px; font-size: 0.85rem; border-radius: 18px;">Falar com Especialista</a>
-  </header>
-
-  <section class="hero hidden">
-    <h1>Apareça no topo do <span class="blue">Google</span> com um posicionamento local impecável e <span class="green">sites ultrarrápidos</span>.</h1>
-    <p style="color: var(--text-muted); max-width: 680px; margin-bottom: 2.5rem; font-size: 1.15rem; line-height: 1.6;">
-      Domine a busca local na sua região e pare de perder clientes para a concorrência. Estruturação profissional de fichas e desenvolvimento sob medida focado em conversão direta.
-    </p>
-    <a href="https://wa.me/5541998161160" target="_blank" class="btn hover-target">Analisar Minha Empresa</a>
-  </section>
-
-  <section class="section">
-    <div class="card gbp hidden hover-target">
-      <h3>Perfil da Empresa no Google (GBP)</h3>
-      <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
-        Otimização técnica completa da sua ficha para posicionamento máximo no Google Maps e na rede de pesquisa. Configuração estratégica de categorias, palavras-chave de intenção local e gestão de relevância para atrair chamadas e rotas diariamente.
-      </p>
-    </div>
-    <div class="card sites hidden hover-target">
-      <h3>Desenvolvimento de Sites Rápidos</h3>
-      <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
-        Páginas criadas diretamente em código puro para carregamento instantâneo. Sem excesso de scripts, sem vulnerabilidades e totalmente otimizadas para os critérios do Core Web Vitals do Google, transformando cliques orgânicos em contatos reais.
-      </p>
-    </div>
-  </section>
-
-  <footer class="contact-bar hidden">
-    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">Papo de Alcance • Curitiba, PR</p>
+ 
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+ 
+<!-- FLOATING WA -->
+<a href="https://wa.me/5541998161160?text=Oi+Jonathan!+Vim+pelo+site+e+quero+uma+análise+gratuita+do+meu+Google." class="wa" title="WhatsApp">💬</a>
+ 
+<!-- NAV -->
+<nav id="nav">
+  <a href="#inicio" class="nav-logo">Papo de Alcance</a>
+  <div class="nav-right">
+    <a href="#sobre" class="nav-link">Sobre</a>
+    <a href="#planos" class="nav-link">Planos</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="https://wa.me/5541998161160?text=Quero+uma+análise+gratuita!" class="nav-btn">Análise gratuita</a>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="glow glow-b"></div>
+  <div class="glow glow-g"></div>
+  <div class="glow glow-r"></div>
+  <div class="hero-inner">
+ 
+    <!-- texto -->
     <div>
-      <a href="mailto:papodealcance@gmail.com" class="contact-link hover-target">papodealcance@gmail.com</a>
-      <span style="color: var(--border);">|</span>
-      <a href="https://wa.me/5541998161160" target="_blank" class="contact-link hover-target">(41) 99816-1160</a>
+      <div class="hero-badge hl d1">
+        <div class="g4">
+          <span style="background:var(--blue)"></span>
+          <span style="background:var(--red)"></span>
+          <span style="background:var(--yellow)"></span>
+          <span style="background:var(--green)"></span>
+        </div>
+        <span class="badge-txt">Google Meu Negócio · Curitiba</span>
+      </div>
+      <h1 class="hl d2">
+        Seu negócio<br>
+        <span class="h1-green">no topo</span><br>
+        do <span class="h1-blue">Google</span>
+      </h1>
+      <p class="hero-sub hl d3">Estruturo e gerencio seu Perfil do Google para que clientes que estão procurando agora encontrem você — sem pagar um real em anúncio.</p>
+      <div class="hero-btns hl d4">
+        <a href="https://wa.me/5541998161160?text=Quero+uma+análise+gratuita+do+meu+Google+Meu+Negócio!" class="btn-main btn-blue">📲 Análise gratuita</a>
+        <a href="#planos" class="btn-main btn-ghost">Ver planos</a>
+      </div>
+      <div class="hero-stats hl d5">
+        <div class="hst"><span class="hst-n" style="color:var(--blue)">8/10</span><span class="hst-l">brasileiros pesquisam no Google antes de comprar</span></div>
+        <div class="hst"><span class="hst-n" style="color:var(--green)">7x</span><span class="hst-l">mais cliques com perfil completo</span></div>
+        <div class="hst"><span class="hst-n" style="color:var(--yellow)">76%</span><span class="hst-l">das buscas viram visita em até 24h</span></div>
+      </div>
     </div>
-  </footer>
-
-  <script>
-    const cursor = document.getElementById('cursor');
-    const hoverTargets = document.querySelectorAll('.hover-target');
-
-    document.addEventListener('mousemove', (e) => {
-      requestAnimationFrame(() => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
-    });
-
-    hoverTargets.forEach(target => {
-      target.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      target.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('show'); }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
-  </script>
+ 
+    <!-- imagem -->
+    <div class="hero-img-wrap hl-img">
+      <div class="img-placeholder">
+        <div class="img-ph">
+          <span class="img-ph-icon">🖼️</span>
+          <span class="img-ph-label">Imagem do hero</span>
+          <span class="img-ph-hint">Ex: mockup do Google Maps com seu perfil<br>ou foto trabalhando com cliente</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-dot"></div>
+        <span class="hc-text">Disponível para novos clientes</span>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tk-track">
+    <div class="tk-item"><div class="tk-dot" style="background:var(--blue)"></div>Google Meu Negócio</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--green)"></div>SEO Local</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--red)"></div>Curitiba</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--yellow)"></div>Gestão de Perfil</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--blue)"></div>Avaliações</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--green)"></div>Tráfego Gratuito</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--red)"></div>Negócios Locais</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--yellow)"></div>Presença Digital</div>
+    <!-- repeat for seamless loop -->
+    <div class="tk-item"><div class="tk-dot" style="background:var(--blue)"></div>Google Meu Negócio</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--green)"></div>SEO Local</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--red)"></div>Curitiba</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--yellow)"></div>Gestão de Perfil</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--blue)"></div>Avaliações</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--green)"></div>Tráfego Gratuito</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--red)"></div>Negócios Locais</div>
+    <div class="tk-item"><div class="tk-dot" style="background:var(--yellow)"></div>Presença Digital</div>
+  </div>
+</div>
+ 
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="rv">
+      <div class="eyebrow" style="color:var(--red)"><div class="eye-line" style="background:var(--red)"></div>Você se identifica?</div>
+      <h2>Situações que estão te<br><em style="color:var(--red)">custando clientes</em> agora</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card pc1 rv rv-d1">
+        <span class="pain-icon">😤</span>
+        <div class="pain-title">Concorrente menor na sua frente</div>
+        <p class="pain-text">Você tem mais experiência e estrutura — mas quando o cliente pesquisa no Google, o concorrente aparece primeiro. Não por mérito. Por presença digital.</p>
+      </div>
+      <div class="pain-card pc2 rv rv-d2">
+        <span class="pain-icon">🤞</span>
+        <div class="pain-title">Faturamento que depende da sorte</div>
+        <p class="pain-text">Indicação é ótimo canal, mas não é previsível. Sem uma fonte ativa de clientes novos, você fica refém do acaso todo mês.</p>
+      </div>
+      <div class="pain-card pc3 rv rv-d3">
+        <span class="pain-icon">📉</span>
+        <div class="pain-title">Perfil que afasta em vez de atrair</div>
+        <p class="pain-text">Foto ruim, avaliação sem resposta, horário errado. Quando o cliente te encontra no Google, a primeira impressão é de descaso — e ele vai embora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- STATS DARK -->
+<section class="stats-dark">
+  <div class="container">
+    <div class="rv">
+      <div class="eyebrow" style="color:rgba(255,255,255,.35)"><div class="eye-line" style="background:rgba(255,255,255,.15)"></div>Dados que importam</div>
+      <h2 style="color:#fff">O Google é a maior<br>vitrine do mundo.<br><em style="color:var(--green)">E ela é gratuita.</em></h2>
+    </div>
+    <div class="stats-grid rv">
+      <div class="sbox"><div class="sbox-num" style="color:var(--blue)">97%</div><div class="sbox-label">dos consumidores buscam negócios locais online antes de decidir</div></div>
+      <div class="sbox"><div class="sbox-num" style="color:var(--green)">7x</div><div class="sbox-label">mais cliques para perfis completos vs perfis incompletos</div></div>
+      <div class="sbox"><div class="sbox-num" style="color:var(--yellow)">76%</div><div class="sbox-label">das buscas locais resultam em visita em até 24 horas</div></div>
+      <div class="sbox"><div class="sbox-num" style="color:var(--red)">R$0</div><div class="sbox-label">de anúncio necessário para capturar esse tráfego todo</div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-box rv rv-l">
+        <div class="about-ph">
+          <span class="about-ph-icon">📸</span>
+          <span class="about-ph-label">Sua foto aqui</span>
+          <span class="about-ph-hint">Foto profissional ou trabalhando<br>Proporção ideal: 3:4 (vertical)</span>
+        </div>
+        <div class="about-chip">
+          <div class="ac-dot"></div>
+          Disponível em Curitiba
+        </div>
+      </div>
+      <div class="rv rv-r rv-d1">
+        <div class="eyebrow" style="color:var(--blue)"><div class="eye-line" style="background:var(--blue)"></div>Quem faz isso por você</div>
+        <h2>Presença local<br>levada a sério</h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px;font-weight:300">Sou gestor de tráfego e especialista em Google Meu Negócio baseado em Curitiba. Trabalho com <strong style="color:var(--dark);font-weight:600">academias, clínicas de estética, barbearias e negócios locais</strong> que querem aparecer antes dos concorrentes.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px;font-weight:300">Não prometo mágica. Prometo <strong style="color:var(--dark);font-weight:600">presença profissional, consistente e que converte</strong> — sem você precisar entender de tecnologia.</p>
+        <div class="about-tags">
+          <span class="atag atag-b">Google Meu Negócio</span>
+          <span class="atag atag-g">SEO Local</span>
+          <span class="atag atag-r">Meta Ads</span>
+          <span class="atag atag-y">Google Ads</span>
+        </div>
+        <div style="margin-top:28px">
+          <a href="https://wa.me/5541998161160" class="btn-main btn-blue" style="font-size:14px;padding:12px 28px">Falar comigo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- HOW -->
+<section class="how">
+  <div class="container">
+    <div class="rv">
+      <div class="eyebrow" style="color:var(--green)"><div class="eye-line" style="background:var(--green)"></div>Como funciona</div>
+      <h2>Três etapas.<br><em style="color:var(--green)">Resultado real.</em></h2>
+      <p class="lead">Sem burocracia. Você foca no seu negócio — eu cuido de tudo no Google.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-card hw1 rv rv-d1">
+        <div class="step-top">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔍</div>
+        </div>
+        <div class="step-title">Diagnóstico gratuito</div>
+        <p class="step-text">Analiso seu perfil atual no Google, identifico os gaps que estão custando clientes e te mostro o que precisa ser feito. Sem compromisso.</p>
+      </div>
+      <div class="how-card hw2 rv rv-d2">
+        <div class="step-top">
+          <div class="step-num">02</div>
+          <div class="step-icon">⚡</div>
+        </div>
+        <div class="step-title">Estruturação completa</div>
+        <p class="step-text">Configuro seu perfil: categoria correta, fotos, descrição com palavras-chave locais, serviços, horários e integração com WhatsApp.</p>
+      </div>
+      <div class="how-card hw3 rv rv-d3">
+        <div class="step-top">
+          <div class="step-num">03</div>
+          <div class="step-icon">📈</div>
+        </div>
+        <div class="step-title">Gestão mensal</div>
+        <p class="step-text">Mantenho seu perfil ativo todo mês: posts, fotos novas, resposta de avaliações e monitoramento. Você nunca fica para trás.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PLANS -->
+<section id="planos">
+  <div class="container">
+    <div class="rv" style="text-align:center;max-width:600px;margin:0 auto">
+      <div class="eyebrow" style="color:var(--blue);justify-content:center"><div class="eye-line" style="background:var(--blue)"></div>Planos e valores</div>
+      <h2>Simples e direto.<br><em style="color:var(--blue)">Sem letras miúdas.</em></h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan plan-light rv rv-d1">
+        <div class="plan-name">Estruturação</div>
+        <div class="plan-price">R$597</div>
+        <div class="plan-period">projeto único · entrega em 5 dias úteis</div>
+        <div class="plan-sep"></div>
+        <ul class="plan-list">
+          <li>Categoria principal e secundárias corretas</li>
+          <li>Descrição com palavras-chave locais</li>
+          <li>Fotos organizadas e geotagueadas</li>
+          <li>Horários, telefone e site configurados</li>
+          <li>Serviços listados com preços</li>
+          <li>Cadastro em guias locais</li>
+        </ul>
+        <a href="https://wa.me/5541998161160?text=Quero+a+Estruturação+do+Google+Meu+Negócio." class="plan-cta cta-dark">Contratar estruturação</a>
+      </div>
+ 
+      <div class="plan plan-dark rv rv-d2">
+        <div class="plan-badge">Mais contratado</div>
+        <div class="plan-name">Gestão Mensal</div>
+        <div class="plan-price">R$197</div>
+        <div class="plan-period">por mês · sem fidelidade mínima</div>
+        <div class="plan-sep"></div>
+        <ul class="plan-list">
+          <li>4 postagens mensais na ficha</li>
+          <li>5 fotos novas por mês</li>
+          <li>Resposta ativa a todas as avaliações</li>
+          <li>Monitoramento de edições de terceiros</li>
+          <li>Atualização de promoções e novidades</li>
+          <li>Relatório mensal de desempenho</li>
+        </ul>
+        <a href="https://wa.me/5541998161160?text=Quero+a+Gestão+Mensal+do+Google+Meu+Negócio." class="plan-cta cta-blue">Contratar agora</a>
+      </div>
+ 
+      <div class="plan plan-light rv rv-d3">
+        <div class="plan-name">Gestão Presencial</div>
+        <div class="plan-price">R$297</div>
+        <div class="plan-period">por mês · visita mensal em Curitiba</div>
+        <div class="plan-sep"></div>
+        <ul class="plan-list">
+          <li>Tudo do plano remoto</li>
+          <li>Visita mensal ao seu negócio</li>
+          <li>Fotos profissionais no local</li>
+          <li>Vídeos curtos do estabelecimento</li>
+          <li>Atualização visual do perfil</li>
+          <li>Atendimento prioritário via WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/5541998161160?text=Quero+a+Gestão+Presencial+do+Google+Meu+Negócio." class="plan-cta cta-dark">Contratar presencial</a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="rv" style="text-align:center;max-width:580px;margin:0 auto">
+      <div class="eyebrow" style="color:var(--muted);justify-content:center"><div class="eye-line" style="background:var(--border)"></div>Dúvidas frequentes</div>
+      <h2>Perguntas que todo<br>cliente me faz</h2>
+    </div>
+    <div class="faq-body rv">
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Você garante que vou aparecer no topo do Google? <span class="fq-ico">+</span></button><div class="fq-ans">Não prometo posição — isso seria desonesto. O que garanto é um perfil completo, ativo e otimizado com as melhores práticas do Google. Isso aumenta significativamente suas chances de aparecer antes dos concorrentes para quem busca seu serviço na sua região.</div></div>
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Meu negócio já tem perfil no Google. Preciso mesmo disso? <span class="fq-ico">+</span></button><div class="fq-ans">Ter perfil é diferente de ter presença otimizada. A maioria dos perfis que encontro estão incompletos, com fotos antigas ou avaliações sem resposta — e isso afasta clientes antes de eles ligarem. A diferença entre um perfil básico e um otimizado é enorme.</div></div>
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Funciona para qualquer tipo de negócio local? <span class="fq-ico">+</span></button><div class="fq-ans">Funciona para qualquer negócio com presença física ou atendimento local em Curitiba: academias, clínicas, barbearias, salões, restaurantes, escritórios e muito mais.</div></div>
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Preciso me envolver muito ou você faz tudo? <span class="fq-ico">+</span></button><div class="fq-ans">No plano remoto, o único trabalho seu é me enviar 5 fotos por mês pelo WhatsApp. Todo o resto eu cuido. No plano presencial, nem isso — eu vou até você mensalmente.</div></div>
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Tem contrato de fidelidade? <span class="fq-ico">+</span></button><div class="fq-ans">Não. A gestão mensal não tem fidelidade mínima. Você pode cancelar a qualquer momento com 15 dias de aviso. Meu trabalho é fazer você querer continuar pelos resultados.</div></div>
+      <div class="fq"><button class="fq-btn" onclick="toggleFaq(this)">Como começo? <span class="fq-ico">+</span></button><div class="fq-ans">Me manda uma mensagem no WhatsApp. Faço um diagnóstico gratuito do seu perfil atual e te mostro exatamente o que está faltando. Em 15 minutos você já sabe o que precisa ser feito.</div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA FINAL -->
+<section class="cta-fin">
+  <div class="container">
+    <div class="g4" style="justify-content:center;margin-bottom:24px;gap:10px">
+      <span style="width:14px;height:14px;border-radius:50%;background:var(--blue);opacity:.5;display:block"></span>
+      <span style="width:14px;height:14px;border-radius:50%;background:var(--red);opacity:.5;display:block"></span>
+      <span style="width:14px;height:14px;border-radius:50%;background:var(--yellow);opacity:.5;display:block"></span>
+      <span style="width:14px;height:14px;border-radius:50%;background:var(--green);opacity:.5;display:block"></span>
+    </div>
+    <h2>Pronto para aparecer para quem<br>está <em style="color:var(--green)">procurando você agora?</em></h2>
+    <p>Análise gratuita do seu perfil. Sem enrolação, sem compromisso.</p>
+    <a href="https://wa.me/5541998161160?text=Oi+Jonathan!+Vim+pelo+site+e+quero+uma+análise+gratuita+do+meu+Google+Meu+Negócio." class="btn-white">📲 Falar com o Jonathan</a>
+    <p class="cta-note">papodealcance@gmail.com · (41) 99816-1160 · Curitiba, PR</p>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="foot-g4">
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:block"></span>
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:block"></span>
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--yellow);display:block"></span>
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:block"></span>
+  </div>
+  <span class="foot-logo">Papo de Alcance</span>
+  <p>Gestão de Google Meu Negócio · Curitiba, PR · © 2026</p>
+</footer>
+ 
+<script>
+/* ── CURSOR ── */
+const dot = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+ 
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+ 
+(function tick(){
+  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+ 
+document.querySelectorAll('a,button,[onclick]').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+ 
+/* ── NAV ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60));
+ 
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const item=btn.closest('.fq');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.fq').forEach(f=>f.classList.remove('open'));
+  if(!open) item.classList.add('open');
+}
+ 
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+ 
+/* ── PARALLAX HERO BG ── */
+window.addEventListener('scroll',()=>{
+  const layer=document.querySelector('.glow-b');
+  if(layer) layer.style.transform=`translateY(${scrollY*.15}px)`;
+});
+</script>
 </body>
 </html>
+ 
